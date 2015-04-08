@@ -41,13 +41,17 @@
 (put 'downcase-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+(require-package 'zenburn-theme)
+(load-theme 'zenburn t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
@@ -64,5 +68,11 @@
 (if (equal system-type 'windows-nt)
     (set-face-attribute 'default nil :font "Consolas 10")
   (set-face-attribute 'default nil :font "Source Code Pro Medium 10"))
+
+;; ----------------------------------------------------------------------------
+;; Store 'Customization' stuff here.
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 (prefer-coding-system 'utf-8)
