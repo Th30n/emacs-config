@@ -20,6 +20,8 @@
 ;; This also automatically installs missing packages, so if you don't
 ;; plan on using any of the modes you should probably comment it out here.
 
+;; Rainbow delimiters
+(require 'init-rainbow-delimiters)
 ;; SLIME (Superior Lisp Interaction Mode for Emacs)
 (require 'init-slime)
 ;; Omnisharp (for working with C# on Windows)
@@ -62,18 +64,5 @@
 (if (equal system-type 'windows-nt)
     (set-face-attribute 'default nil :font "Consolas 10")
   (set-face-attribute 'default nil :font "Source Code Pro Medium 10"))
-
-;; Rainbow delimiters
-(require 'rainbow-delimiters)
-
-(setq rainbow-delimiters-max-face-count 6)
-(set-face-foreground 'rainbow-delimiters-depth-1-face "gray")
-(set-face-foreground 'rainbow-delimiters-depth-2-face "aquamarine")
-(set-face-foreground 'rainbow-delimiters-depth-3-face "gold")
-(set-face-foreground 'rainbow-delimiters-depth-4-face "orchid")
-(set-face-foreground 'rainbow-delimiters-depth-5-face "OliveDrab3")
-(set-face-foreground 'rainbow-delimiters-depth-6-face "peru")
-(set-face-foreground 'rainbow-delimiters-unmatched-face "red")
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (prefer-coding-system 'utf-8)
