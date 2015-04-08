@@ -42,28 +42,24 @@
 (put 'scroll-left 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; Set theme
 (require-package 'zenburn-theme)
 (load-theme 'zenburn t)
+(setq-default custom-enabled-themes '(zenburn))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(custom-enabled-themes (quote (zenburn)))
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(display-time-mode t)
- '(global-linum-mode nil)
- '(indent-tabs-mode nil)
- '(indicate-buffer-boundaries (quote left))
- '(line-number-mode t)
- '(menu-bar-mode nil)
- '(read-buffer-completion-ignore-case t)
- '(read-file-name-completion-ignore-case t)
- '(scroll-bar-mode nil)
- '(tool-bar-mode nil))
+(display-time-mode)
+
+(setq-default
+ column-number-mode t
+ display-time-24hr-format t
+ display-time-default-load-average nil
+ indent-tabs-mode nil
+ indicate-buffer-boundaries 'left
+ read-buffer-completion-ignore-case t)
+
+(tool-bar-mode -1)
+(set-scroll-bar-mode nil)
+(menu-bar-mode -1)
 
 (if (equal system-type 'windows-nt)
     (set-face-attribute 'default nil :font "Consolas 10")
