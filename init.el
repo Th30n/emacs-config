@@ -30,6 +30,10 @@
 (require 'init-haskell)
 ;; ----------------------------------------------------------------------------
 
+;; Windows fix for pushing via https.
+(when (equal system-type 'windows-nt)
+  (setenv "GIT_ASKPASS" "git gui--askpass"))
+
 ;; Ido (Interactive Do)
 (require 'ido)
 (ido-mode 'buffers)
