@@ -1,4 +1,4 @@
-# Teon Banek's Emacs configuration
+# My Emacs configuration
 
 This is my starting Emacs configuration. It will probably expand as I am learning
 Emacs.
@@ -11,11 +11,11 @@ languages:
 
 ## Installation
 
-Remove and _backup_ your `~/.emacs.d` directory then follow these steps:
+Remove and **backup** your `~/.emacs.d` directory then follow these steps:
 
   * Clone repo `git clone https://github.com/Th30n/emacs-config ~/.emacs.d`
   * You will probably want to merge your backup without overwriting cloned files.
-  * After running Emacs missing packages will automatically be downloaded.
+  * After running Emacs, missing packages will automatically be downloaded.
 
 ## Configuration structure
 
