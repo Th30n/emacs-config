@@ -51,8 +51,6 @@
 (load-theme 'zenburn t)
 (setq-default custom-enabled-themes '(zenburn))
 
-(display-time-mode)
-
 (setq-default
  column-number-mode t
  display-time-24hr-format t
@@ -60,6 +58,8 @@
  indent-tabs-mode nil
  indicate-buffer-boundaries 'left
  read-buffer-completion-ignore-case t)
+
+(display-time-mode)
 
 (tool-bar-mode -1)
 (set-scroll-bar-mode nil)
