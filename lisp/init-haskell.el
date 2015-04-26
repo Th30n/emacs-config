@@ -3,7 +3,6 @@
 
 (setq haskell-compile-command
    "ghc -Wall -ferror-spans -fforce-recomp -fwarn-tabs -c %s")
-(setq haskell-font-lock-symbols nil)
 (setq haskell-process-auto-import-loaded-modules t)
 (setq haskell-process-log t)
 (setq haskell-process-suggest-remove-import-lines t)
