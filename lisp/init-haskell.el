@@ -4,10 +4,12 @@
 (setq haskell-compile-command
    "ghc -Wall -ferror-spans -fforce-recomp -fwarn-tabs -c %s")
 (setq haskell-font-lock-symbols nil)
-(setq haskell-mode-hook (quote (turn-on-haskell-doc turn-on-haskell-indentation)))
 (setq haskell-process-auto-import-loaded-modules t)
 (setq haskell-process-log t)
 (setq haskell-process-suggest-remove-import-lines t)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 (eval-after-load 'haskell-mode
   '(progn
