@@ -67,7 +67,7 @@
 
 (if (equal system-type 'windows-nt)
     (set-face-attribute 'default nil :font "Consolas 10")
-  (set-face-attribute 'default nil :font "Source Code Pro Medium 10"))
+  (set-face-attribute 'default nil :font "Source Code Pro Semibold 10"))
 
 ;; ----------------------------------------------------------------------------
 ;; Store 'Customization' stuff here.
