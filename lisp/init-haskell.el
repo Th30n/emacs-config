@@ -7,7 +7,6 @@
 (setq haskell-process-auto-import-loaded-modules t)
 (setq haskell-process-log t)
 (setq haskell-process-suggest-remove-import-lines t)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
