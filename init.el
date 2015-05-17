@@ -30,6 +30,9 @@
 (require 'init-haskell)
 ;; CC Mode customizations
 (require 'init-cc)
+;; Magit setup
+(require-package 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 ;; ----------------------------------------------------------------------------
 
 ;; Windows fix for pushing via https.
