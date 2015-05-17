@@ -21,10 +21,10 @@
 
 (add-hook 'c-initialization-hook 'my-c-init-hook)
 
-(defun my-c++-mode-hook ()
+(defun my-c-mode-common-hook ()
   (when (equal system-type 'windows-nt)
     (set (make-local-variable 'compile-command) "msbuild")))
 
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (provide 'init-cc)
