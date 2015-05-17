@@ -57,6 +57,7 @@
 (setq-default custom-enabled-themes '(zenburn))
 
 (setq-default
+ show-trailing-whitespace t
  column-number-mode t
  display-time-24hr-format t
  display-time-default-load-average nil
