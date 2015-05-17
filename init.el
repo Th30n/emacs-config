@@ -28,6 +28,8 @@
 (require 'init-omnisharp)
 ;; Haskell
 (require 'init-haskell)
+;; CC Mode customizations
+(require 'init-cc)
 ;; ----------------------------------------------------------------------------
 
 ;; Windows fix for pushing via https.
