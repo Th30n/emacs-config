@@ -57,7 +57,6 @@
 (setq-default custom-enabled-themes '(zenburn))
 
 (setq-default
- show-trailing-whitespace t
  column-number-mode t
  display-time-24hr-format t
  display-time-default-load-average nil
@@ -70,6 +69,8 @@
 (tool-bar-mode -1)
 (set-scroll-bar-mode nil)
 (menu-bar-mode -1)
+
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 (set-face-attribute 'default nil :font "Source Code Pro Semibold 10")
 
