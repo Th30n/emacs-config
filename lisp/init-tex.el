@@ -13,5 +13,6 @@
 
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'latex-math-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
 (provide 'init-tex)
