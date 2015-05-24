@@ -75,10 +75,14 @@
 
 (set-face-attribute 'default nil :font "Source Code Pro Semibold 10")
 
+(prefer-coding-system 'utf-8)
+
 ;; ----------------------------------------------------------------------------
 ;; Store 'Customization' stuff here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(prefer-coding-system 'utf-8)
+;; ----------------------------------------------------------------------------
+;; Load local stuff.
+(require 'init-local nil t)
