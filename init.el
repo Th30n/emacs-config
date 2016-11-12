@@ -45,6 +45,14 @@
 (setq ido-case-fold t)
 (setq ido-use-virtual-buffers t)
 
+;; Org Mode
+(require 'org)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
+(setq org-agenda-start-on-weekday nil) ;; Start week from current day.
+
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
