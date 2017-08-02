@@ -37,7 +37,7 @@
 
 ;; Windows fix for pushing via https.
 (when (equal system-type 'windows-nt)
-  (setenv "GIT_ASKPASS" "git gui--askpass"))
+  (setenv "GIT_ASKPASS" "git-gui--askpass"))
 
 ;; Ido (Interactive Do)
 (require 'ido)
