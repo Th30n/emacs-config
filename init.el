@@ -24,8 +24,6 @@
 (require 'init-rainbow-delimiters)
 ;; SLIME (Superior Lisp Interaction Mode for Emacs)
 (require 'init-slime)
-;; Omnisharp (for working with C# on Windows)
-(require 'init-omnisharp)
 ;; Haskell
 (require 'init-haskell)
 ;; CC Mode customizations
@@ -33,11 +31,9 @@
 ;; Magit setup
 (require-package 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
-;; ----------------------------------------------------------------------------
-
-;; Windows fix for pushing via https.
 (when (equal system-type 'windows-nt)
-  (setenv "GIT_ASKPASS" "git-gui--askpass"))
+  (require 'init-windows))
+;; ----------------------------------------------------------------------------
 
 ;; Ido (Interactive Do)
 (require 'ido)
