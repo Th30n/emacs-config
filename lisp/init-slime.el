@@ -2,7 +2,7 @@
 (require-package 'slime)
 
 (with-eval-after-load 'slime
-  (slime-setup '(slime-fancy))
+  (slime-setup '(slime-indentation slime-fancy))
   (setq slime-auto-start 'ask)
   (setq slime-repl-history-remove-duplicates t)
   (when (executable-find "sbcl")
