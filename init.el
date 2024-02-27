@@ -54,17 +54,29 @@
 ;; Set theme
 (require-package 'gruvbox-theme)
 (load-theme 'gruvbox t t)
-(load-theme 'gruvbox-light-hard t)
+(load-theme 'gruvbox-light-hard t t)
 
 (defun light-theme ()
   (interactive)
-  (mapc #'disable-theme custom-enabled-themes)
-  (enable-theme 'gruvbox-light-hard))
+  (unless (member 'gruvbox-light-hard custom-enabled-themes)
+    (mapc #'disable-theme custom-enabled-themes)
+    (enable-theme 'gruvbox-light-hard)))
 
 (defun dark-theme ()
   (interactive)
-  (mapc #'disable-theme custom-enabled-themes)
-  (enable-theme #'gruvbox))
+  (unless (member 'gruvbox custom-enabled-themes)
+    (mapc #'disable-theme custom-enabled-themes)
+    (enable-theme #'gruvbox)))
+
+(defun theme-for-time-of-day ()
+  (interactive)
+  (let ((curr-hour (decoded-time-hour (decode-time))))
+    (if (< 7 curr-hour 17)
+        (light-theme)
+      (dark-theme))))
+
+(cancel-function-timers #'theme-for-time-of-day)
+(run-with-timer 0 60 #'theme-for-time-of-day)
 
 (setq-default
  fill-column 78
