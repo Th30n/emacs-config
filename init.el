@@ -53,7 +53,7 @@
 
 ;; Set theme
 (require-package 'gruvbox-theme)
-(load-theme 'gruvbox t t)
+(load-theme 'gruvbox-dark-soft t t)
 (load-theme 'gruvbox-light-hard t t)
 
 (defun light-theme ()
@@ -64,9 +64,9 @@
 
 (defun dark-theme ()
   (interactive)
-  (unless (member 'gruvbox custom-enabled-themes)
+  (unless (member 'gruvbox-dark-soft custom-enabled-themes)
     (mapc #'disable-theme custom-enabled-themes)
-    (enable-theme #'gruvbox)))
+    (enable-theme #'gruvbox-dark-soft)))
 
 (defun theme-for-time-of-day ()
   (interactive)
