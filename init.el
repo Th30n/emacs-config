@@ -56,6 +56,16 @@
 (load-theme 'gruvbox t t)
 (load-theme 'gruvbox-light-hard t)
 
+(defun light-theme ()
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes)
+  (enable-theme 'gruvbox-light-hard))
+
+(defun dark-theme ()
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes)
+  (enable-theme #'gruvbox))
+
 (setq-default
  fill-column 78
  column-number-mode t
