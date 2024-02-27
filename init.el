@@ -52,9 +52,9 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; Set theme
-(require-package 'zenburn-theme)
-(load-theme 'zenburn t)
-(setq-default custom-enabled-themes '(zenburn))
+(require-package 'gruvbox-theme)
+(load-theme 'gruvbox t t)
+(load-theme 'gruvbox-light-hard t)
 
 (setq-default
  fill-column 78
