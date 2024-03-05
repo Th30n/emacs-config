@@ -1,60 +1,66 @@
-(let ((min-ver "24"))
+(let ((min-ver "29"))
   (when (version< emacs-version min-ver)
     (error "Your Emacs version is too old, v%s or higher is required" min-ver)))
 
 ;; ----------------------------------------------------------------------------
 ;; Setup code
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-(require 'init-utils)
+;; MELPA repository for additional packages
+(use-package package
+  :config
+  (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t))
 ;; End setup code
 ;; ----------------------------------------------------------------------------
 
-;; MELPA repository for additional packages
-(require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(package-initialize)
-
 ;; ----------------------------------------------------------------------------
 ;; Load configurations for various modes and packages.
-;; This also automatically installs missing packages, so if you don't
-;; plan on using any of the modes you should probably comment it out here.
 
 ;; Rainbow delimiters
-(require 'init-rainbow-delimiters)
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 ;; SLIME (Superior Lisp Interaction Mode for Emacs)
-(require 'init-slime)
+(use-package slime
+  :ensure t
+  :config
+  (slime-setup '(slime-indentation slime-fancy))
+  (setq slime-auto-start 'ask)
+  (setq slime-repl-history-remove-duplicates t)
+  (when (executable-find "sbcl")
+    (add-to-list 'slime-lisp-implementations
+                 '(sbcl ("sbcl") :coding-system utf-8-unix))))
+
 ;; Magit setup
-(require-package 'magit)
-(global-set-key (kbd "C-x g") 'magit-status)
+(use-package magit :ensure t)
+
+;; Load Windows setup
 (when (equal system-type 'windows-nt)
   (require 'init-windows))
-;; ----------------------------------------------------------------------------
 
 ;; Ido (Interactive Do)
-(require 'ido)
-(ido-mode 'buffers)
-(setq ido-case-fold t)
-(setq ido-use-virtual-buffers t)
+(use-package ido
+  :config
+  (ido-mode 'buffers)
+  (setq ido-case-fold t)
+  (setq ido-use-virtual-buffers t))
 
 ;; Org Mode
-(require 'org)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c b") 'org-iswitchb)
-(setq org-agenda-start-on-weekday nil) ;; Start week from current day.
+(use-package org
+  :config
+  (keymap-global-set "C-c l" 'org-store-link)
+  (keymap-global-set "C-c c" 'org-capture)
+  (keymap-global-set "C-c a" 'org-agenda))
 
-(put 'set-goal-column 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'scroll-left 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
+;; ----------------------------------------------------------------------------
 
 ;; Set theme
-(require-package 'gruvbox-theme)
-(load-theme 'gruvbox-dark-soft t t)
-(load-theme 'gruvbox-light-hard t t)
+(use-package gruvbox-theme
+  :ensure t
+  :config
+  (load-theme 'gruvbox-dark-soft t t)
+  (load-theme 'gruvbox-light-hard t t))
 
 (defun light-theme ()
   (interactive)
@@ -77,6 +83,13 @@
 
 (cancel-function-timers #'theme-for-time-of-day)
 (run-with-timer 0 60 #'theme-for-time-of-day)
+
+;; Enable disabled functions (they are disabled for newcomers).
+(put 'set-goal-column 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 (setq-default
  fill-column 78
