@@ -53,6 +53,12 @@
   (keymap-global-set "C-c c" 'org-capture)
   (keymap-global-set "C-c a" 'org-agenda))
 
+;; Spellchecking (requires `aspell` or similar to be installed on system)
+(use-package flyspell
+  :hook ((org-mode text-mode) . (lambda ()
+                                  (flyspell-mode)
+                                  (flyspell-buffer))))
+
 ;; ----------------------------------------------------------------------------
 
 ;; Set theme
