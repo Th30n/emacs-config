@@ -58,6 +58,14 @@
   :hook ((org-mode text-mode) . (lambda ()
                                   (flyspell-mode)
                                   (flyspell-buffer))))
+;; Emacs IRC Client (ERC)
+(use-package erc
+  :config
+  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
+  (setopt erc-modules
+          '(autojoin button completion fill irccontrols keep-place list
+            match menu move-to-prompt netsplit networks noncommands
+            notifications readonly ring stamp spelling track)))
 
 ;; ----------------------------------------------------------------------------
 
