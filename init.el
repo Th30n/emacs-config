@@ -64,7 +64,10 @@
   (setopt erc-modules
           '(autojoin button completion fill irccontrols keep-place list
             match menu move-to-prompt netsplit networks noncommands
-            notifications readonly ring stamp spelling track)))
+            notifications readonly ring stamp spelling track))
+  :hook (erc-mode . hl-line-mode))
+;; ERC nickname coloring/highlighting
+(use-package erc-hl-nicks :ensure t :hook erc-mode)
 
 ;; ----------------------------------------------------------------------------
 
