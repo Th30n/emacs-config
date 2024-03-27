@@ -18,8 +18,7 @@
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
   :ensure t
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  :hook prog-mode)
 
 ;; SLIME (Superior Lisp Interaction Mode for Emacs)
 (use-package slime
