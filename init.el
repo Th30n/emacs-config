@@ -54,9 +54,13 @@
 
 ;; Spellchecking (requires `aspell` or similar to be installed on system)
 (use-package flyspell
-  :hook ((org-mode text-mode) . (lambda ()
-                                  (flyspell-mode)
-                                  (flyspell-buffer))))
+  :hook (((org-mode text-mode) . (lambda ()
+                                   (flyspell-mode)
+                                   (flyspell-buffer)))
+         (prog-mode . (lambda ()
+                        (flyspell-prog-mode)
+                        (flyspell-buffer)))))
+
 ;; Emacs IRC Client (ERC)
 (use-package erc
   :config
