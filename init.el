@@ -73,6 +73,30 @@
 ;; ERC nickname coloring/highlighting
 (use-package erc-hl-nicks :ensure t :hook erc-mode)
 
+;; Lightweight Rust mode
+(use-package rust-mode
+  :ensure t
+  :custom
+  (rust-rustfmt-switches '("+nightly"))
+  :hook
+  (rust-mode . (lambda ()
+                 (setq fill-column 99)
+                 (electric-pair-local-mode)
+                 (subword-mode)
+                 (setq display-line-numbers 'visual)))
+  :bind (:map rust-mode-map
+              ("C-M-\\" . rustfmt-region)))
+
+(defun rustfmt-region (start end)
+  (interactive "r")
+  (shell-command-on-region start end "rustfmt +nightly" nil t))
+
+(defun find-cargo-toml ()
+  (interactive)
+  (when-let ((dir (locate-dominating-file buffer-file-truename "Cargo.toml")))
+    (message "Found `Cargo.toml' in `%s'" dir)
+    (find-file (concat dir "Cargo.toml"))))
+
 ;; ----------------------------------------------------------------------------
 
 ;; Set theme
