@@ -123,8 +123,6 @@
 ;; Use eww as default browser
 (setq-default browse-url-browser-function 'eww-browse-url)
 
-(display-time-mode)
-
 (tool-bar-mode -1)
 (set-scroll-bar-mode nil)
 (menu-bar-mode -1)
