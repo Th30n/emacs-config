@@ -140,7 +140,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 (setq-default
- fill-column 78
+ fill-column 79
  column-number-mode t
  display-time-24hr-format t
  display-time-default-load-average nil
