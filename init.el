@@ -57,12 +57,13 @@
 
 ;; Spellchecking (requires `aspell` or similar to be installed on system)
 (use-package flyspell
-  :hook (((org-mode text-mode) . (lambda ()
-                                   (flyspell-mode)
-                                   (flyspell-buffer)))
-         (prog-mode . (lambda ()
-                        (flyspell-prog-mode)
-                        (flyspell-buffer)))))
+  :hook ((org-mode text-mode)
+         (flyspell-mode . flyspell-buffer)
+         (prog-mode . flyspell-prog-mode)
+         ;; XXX: This doesn't seem to actually work. Emacs states spellchecking
+         ;; is done, but it actually isn't. Perhaps it runs to early?
+         ;; (flyspell-prog-mode . flyspell-buffer)
+         ))
 
 ;; Emacs IRC Client (ERC)
 (use-package erc
