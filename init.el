@@ -50,7 +50,10 @@
   :config
   (keymap-global-set "C-c l" 'org-store-link)
   (keymap-global-set "C-c c" 'org-capture)
-  (keymap-global-set "C-c a" 'org-agenda))
+  (keymap-global-set "C-c a" 'org-agenda)
+  ;; Enable `auto-revert-mode' because I typically access .org files from
+  ;; multiple computers.
+  :hook (org-mode . auto-revert-mode))
 
 ;; Spellchecking (requires `aspell` or similar to be installed on system)
 (use-package flyspell
