@@ -32,7 +32,12 @@
                  '(sbcl ("sbcl") :coding-system utf-8-unix))))
 
 ;; Magit setup
-(use-package magit :ensure t)
+(use-package magit :ensure t
+  :config
+  (setopt git-commit-summary-max-length 51)
+  :init
+  ;; For some reason this doesn't work with :hook, so do it explicitly.
+  (add-hook 'git-commit-setup-hook (lambda () (setq fill-column 72))))
 
 ;; Load Windows setup
 (when (equal system-type 'windows-nt)
