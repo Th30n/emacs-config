@@ -143,8 +143,12 @@
 
 (defun theme-for-time-of-day ()
   (interactive)
-  (let ((curr-hour (decoded-time-hour (decode-time))))
-    (if (< 7 curr-hour 17)
+  (let* ((curr-hour (decoded-time-hour (decode-time)))
+         (curr-month (decoded-time-month (decode-time)))
+         ;; Setup different hours for March---Aug
+         (morning-hour (if (<= 3 curr-month 8) 7 8))
+         (evening-hour (if (<= 3 curr-month 8) 17 16)))
+    (if (< morning-hour curr-hour evening-hour)
         (light-theme)
       (dark-theme))))
 
