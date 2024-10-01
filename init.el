@@ -100,8 +100,7 @@
   (rust-mode . (lambda ()
                  (setq fill-column 99)
                  (electric-pair-local-mode)
-                 (subword-mode)
-                 (setq display-line-numbers 'visual)))
+                 (subword-mode)))
   :bind (:map rust-mode-map
               ("C-M-\\" . rustfmt-region)))
 
