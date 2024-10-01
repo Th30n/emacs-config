@@ -96,6 +96,12 @@
   :bind (:map rust-mode-map
               ("C-M-\\" . rustfmt-region)))
 
+(setf (alist-get 'my-cargo-test compilation-error-regexp-alist-alist)
+      (list "\\(^thread .+ panicked at \\([^\n]+\\):\\([0-9]+\\):\\([0-9]+\\):$\\)"
+            2 3 4 nil nil (list 1 compilation-error-face)))
+
+(add-to-list 'compilation-error-regexp-alist 'my-cargo-test)
+
 (defun rustfmt-region (start end)
   (interactive "r")
   (shell-command-on-region start end "rustfmt +nightly" nil t))
