@@ -1,19 +1,18 @@
+;;; Version Check
+
 (let ((min-ver "29"))
   (when (version< emacs-version min-ver)
     (error "Your Emacs version is too old, v%s or higher is required" min-ver)))
 
-;; ----------------------------------------------------------------------------
-;; Setup code
+;;; Package Setup Code
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 ;; MELPA repository for additional packages
 (use-package package
   :config
   (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t))
-;; End setup code
-;; ----------------------------------------------------------------------------
 
-;; ----------------------------------------------------------------------------
-;; Load configurations for various modes and packages.
+;;; Modes & Packages
 
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
@@ -120,9 +119,8 @@
     (message "Found `Cargo.toml' in `%s'" dir)
     (find-file (concat dir "Cargo.toml"))))
 
-;; ----------------------------------------------------------------------------
+;;; Theme
 
-;; Set theme
 (use-package gruvbox-theme
   :ensure t
   :config
@@ -154,6 +152,8 @@
 
 (cancel-function-timers #'theme-for-time-of-day)
 (run-with-timer 0 60 #'theme-for-time-of-day)
+
+;;; Defaults
 
 ;; Enable disabled functions (they are disabled for newcomers).
 (put 'set-goal-column 'disabled nil)
@@ -193,3 +193,9 @@
 ;; ----------------------------------------------------------------------------
 ;; Load local stuff.
 (require 'init-local nil t)
+
+;;; File Local Variables
+
+;; Local Variables:
+;; outline-minor-mode: t
+;; End:
