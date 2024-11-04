@@ -119,6 +119,10 @@
     (message "Found `Cargo.toml' in `%s'" dir)
     (find-file (concat dir "Cargo.toml"))))
 
+;;;; Dired
+(setopt dired-isearch-filenames 'dwim)
+(setopt dired-dwim-target t)
+
 ;;; Theme
 
 (use-package gruvbox-theme
