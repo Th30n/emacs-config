@@ -71,12 +71,12 @@
 ;; Spellchecking (requires `aspell` or similar to be installed on system)
 (use-package flyspell
   :hook ((org-mode text-mode)
-         (flyspell-mode . flyspell-buffer)
-         (prog-mode . flyspell-prog-mode)
-         ;; XXX: This doesn't seem to actually work. Emacs states spellchecking
-         ;; is done, but it actually isn't. Perhaps it runs to early?
-         ;; (flyspell-prog-mode . flyspell-buffer)
-         ))
+         ;; The `flyspell-mode-hook' is called on enter & leave.  It is also
+         ;; called for `flyspell-prog-mode', but for some reason doesn't
+         ;; actually work there.  Emacs states spellchecking is done, but
+         ;; spelling errors aren't underlined.
+         (flyspell-mode . (lambda () (when flyspell-mode (flyspell-buffer))))
+         (prog-mode . flyspell-prog-mode)))
 
 ;; Emacs IRC Client (ERC)
 (use-package erc
