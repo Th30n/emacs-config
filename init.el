@@ -64,6 +64,8 @@
   (keymap-global-set "C-c l" 'org-store-link)
   (keymap-global-set "C-c c" 'org-capture)
   (keymap-global-set "C-c a" 'org-agenda)
+  (setopt org-agenda-skip-scheduled-if-done t)
+  (setopt org-agenda-skip-deadline-if-done t)
   ;; Enable `auto-revert-mode' because I typically access .org files from
   ;; multiple computers.
   :hook (org-mode . auto-revert-mode))
