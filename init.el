@@ -68,7 +68,8 @@
   (setopt org-agenda-skip-deadline-if-done t)
   ;; Enable `auto-revert-mode' because I typically access .org files from
   ;; multiple computers.
-  :hook (org-mode . auto-revert-mode))
+  :hook ((org-mode . auto-revert-mode)
+         (org-agenda-mode . hl-line-mode)))
 
 ;; Spellchecking (requires `aspell` or similar to be installed on system)
 (use-package flyspell
