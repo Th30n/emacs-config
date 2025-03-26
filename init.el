@@ -46,9 +46,9 @@
 (when (executable-find "rg")
   (use-package grep
     :config
-    (grep-apply-setting 'grep-command "rg --vimgrep ")
+    (grep-apply-setting 'grep-command "rg -nH --no-heading ")
     (grep-apply-setting 'grep-use-null-device nil)
-    (grep-apply-setting 'grep-find-template "find -H <D> <X> -type f <F> -exec rg --vimgrep <C> -nH --null -e <R> \\{\\} +"))
+    (grep-apply-setting 'grep-find-template "find -H <D> <X> -type f <F> -exec rg <C> -nH --no-heading --null -e <R> \\{\\} +"))
   (setopt xref-search-program 'ripgrep))
 
 ;; Ido (Interactive Do)
