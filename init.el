@@ -1,6 +1,6 @@
 ;;; Version Check
 
-(let ((min-ver "29"))
+(let ((min-ver "30"))
   (when (version< emacs-version min-ver)
     (error "Your Emacs version is too old, v%s or higher is required" min-ver)))
 
@@ -82,11 +82,9 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (setopt erc-modules
           '(autojoin button completion fill irccontrols keep-place list
-            match menu move-to-prompt netsplit networks noncommands
-            notifications readonly ring stamp spelling track))
+            match menu move-to-prompt netsplit networks nicks noncommands
+            notifications readonly ring spelling stamp track))
   :hook (erc-mode . hl-line-mode))
-;; ERC nickname coloring/highlighting
-(use-package erc-hl-nicks :ensure t :hook erc-mode)
 
 ;; Lightweight Rust mode
 (use-package rust-mode
