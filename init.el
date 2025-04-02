@@ -49,6 +49,7 @@
     (grep-apply-setting 'grep-command "rg -nHS --no-heading ")
     (grep-apply-setting 'grep-use-null-device nil)
     (grep-apply-setting 'grep-find-template "find -H <D> <X> -type f <F> -exec rg <C> -nHS --no-heading --null -e <R> \\{\\} +"))
+  (setopt grep-use-headings t)
   (setopt xref-search-program 'ripgrep))
 
 ;; Ido (Interactive Do)
