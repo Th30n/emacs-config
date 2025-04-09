@@ -166,6 +166,8 @@
 (put 'scroll-left 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+(setopt kill-do-not-save-duplicates t)
+
 (setq-default
  fill-column 79
  column-number-mode t
