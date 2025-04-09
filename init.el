@@ -67,6 +67,9 @@
   (keymap-global-set "C-c a" 'org-agenda)
   (setopt org-agenda-skip-scheduled-if-done t)
   (setopt org-agenda-skip-deadline-if-done t)
+  (setopt org-agenda-custom-commands
+          '(("n" "Week agenda and all TODOs scheduled for today (or without SCHEDULE)"
+             ((agenda "") (tags-todo "SCHEDULED<=\"<today>\"|SCHEDULED=\"\"")))))
   ;; Enable `auto-revert-mode' because I typically access .org files from
   ;; multiple computers.
   :hook ((org-mode . auto-revert-mode)
