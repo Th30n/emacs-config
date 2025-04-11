@@ -184,6 +184,9 @@
 (set-scroll-bar-mode nil)
 (menu-bar-mode -1)
 
+(setopt comint-input-ignoredups t)
+(setopt comint-prompt-read-only t)
+
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 (set-face-attribute 'default nil :font "Source Code Pro Semibold 10")
