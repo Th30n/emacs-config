@@ -119,6 +119,17 @@
     (message "Found `Cargo.toml' in `%s'" dir)
     (find-file (concat dir "Cargo.toml"))))
 
+;;;; Aider
+
+(when (executable-find "aider")
+  (defun aider ()
+    "Start Aider (AI pair programming) in `default-directory'"
+    (interactive)
+    (pop-to-buffer
+     ;; NOTE: `--watch-files` doesn't work with `comint-mode'
+     (make-comint "aider" "aider" nil
+                  "--chat-mode" "ask" "--watch-files" "--subtree-only"))))
+
 ;;;; Dired
 (setopt dired-isearch-filenames 'dwim)
 (setopt dired-dwim-target t)
