@@ -131,6 +131,8 @@
                   "--chat-mode" "ask" "--watch-files" "--subtree-only"))))
 
 ;;;; Dired
+
+(setopt dired-listing-switches "--group-directories-first -lha")
 (setopt dired-isearch-filenames 'dwim)
 (setopt dired-dwim-target t)
 
