@@ -65,6 +65,10 @@
   (keymap-global-set "C-c l" 'org-store-link)
   (keymap-global-set "C-c c" 'org-capture)
   (keymap-global-set "C-c a" 'org-agenda)
+  ;; Make `org-refile' look for up to :maxlevel headers in the current file.
+  (setopt org-refile-targets '((nil . (:maxlevel . 2))))
+  ;; Make `org-refile' use path-like selection of headers.
+  (setopt org-refile-use-outline-path t)
   (setopt org-agenda-skip-scheduled-if-done t)
   (setopt org-agenda-skip-deadline-if-done t)
   (setopt org-agenda-custom-commands
