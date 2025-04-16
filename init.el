@@ -172,6 +172,15 @@
 
 ;;; Defaults
 
+(defun find-user-init-file (arg)
+  "Edit init.el.  If called with a prefix argument, edit init-local.el"
+  (interactive "P")
+  (if arg
+      (find-library "init-local")
+    (find-file user-init-file)))
+
+(keymap-global-set "C-c i" 'find-user-init-file)
+
 ;; Enable disabled functions (they are disabled for newcomers).
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
