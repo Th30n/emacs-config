@@ -162,14 +162,32 @@
 
 (defun theme-for-time-of-day ()
   (interactive)
-  (let* ((curr-hour (decoded-time-hour (decode-time)))
-         (curr-month (decoded-time-month (decode-time)))
-         ;; Setup different hours for March---Aug
-         (morning-hour (if (<= 3 curr-month 8) 7 8))
-         (evening-hour (if (<= 3 curr-month 8) 17 16)))
-    (if (< morning-hour curr-hour evening-hour)
-        (light-theme)
-      (dark-theme))))
+  (let* ((curr-time (decode-time))
+         (curr-hour (decoded-time-hour curr-time))
+         (curr-minute (decoded-time-minute curr-time))
+         (curr-month (decoded-time-month curr-time)))
+    (if (and (require 'solar nil t) calendar-latitude calendar-longitude)
+        ;; We have setup latitude and longitude so we can use the sunrise and
+        ;; sunset times to determine when to switch themes.
+        (let* ((sunrise-sunset (solar-sunrise-sunset (calendar-current-date)))
+               ;; The result of `solar-sunrise-sunset' outputs times as a
+               ;; fraction of hours in a day.  We want to offset the
+               ;; sunrise/sunset by half an hour toward noon.
+               (sunrise (+ (caar sunrise-sunset) 0.5))
+               (sunset (- (caadr sunrise-sunset) 0.5))
+               ;; Convert current time to a floating point comparable to
+               ;; sunrise/sunset.
+               (curr-hour-fraction (+ curr-hour (/ curr-minute 60.0))))
+          (if (<= sunrise curr-hour-fraction sunset)
+              (light-theme)
+            (dark-theme)))
+      ;; Without latitude/longitude fallback to hard-coded values.
+      ;; We have different hours for March---Aug
+      (let* ((morning-hour (if (<= 3 curr-month 8) 7 8))
+             (evening-hour (if (<= 3 curr-month 8) 17 16)))
+        (if (< morning-hour curr-hour evening-hour)
+            (light-theme)
+          (dark-theme))))))
 
 (cancel-function-timers #'theme-for-time-of-day)
 (run-with-timer 0 60 #'theme-for-time-of-day)
