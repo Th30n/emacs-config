@@ -212,6 +212,9 @@
 
 (setopt kill-do-not-save-duplicates t)
 
+;; Make Dabbrev completion copy expansion case.
+(setopt dabbrev-case-replace nil)
+
 (setq-default
  fill-column 79
  column-number-mode t
