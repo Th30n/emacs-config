@@ -240,6 +240,14 @@
 
 (prefer-coding-system 'utf-8)
 
+(use-package char-fold
+  :config
+  ;; When searching for "d" with char-fold searching, also include "đ"
+  (setf (alist-get ?d char-fold-include) '("đ"))
+  ;; Using `setf' doesn't really work correctly with customization variables,
+  ;; so reset with `setopt' to actually propagate the change correctly.
+  (setopt char-fold-include char-fold-include))
+
 ;; ----------------------------------------------------------------------------
 ;; Store 'Customization' stuff here.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
