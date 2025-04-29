@@ -94,6 +94,13 @@
             notifications readonly ring spelling stamp track))
   :hook (erc-mode . hl-line-mode))
 
+;; Proced Mode
+(use-package proced
+  :config
+  (setopt proced-auto-update-flag 'visible)
+  (setopt proced-enable-color-flag t)
+  (setopt proced-tree-flag t))
+
 ;; Lightweight Rust mode
 (use-package rust-mode
   :ensure t
