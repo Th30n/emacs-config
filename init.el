@@ -101,6 +101,12 @@
   (setopt proced-enable-color-flag t)
   (setopt proced-tree-flag t))
 
+;; Ediff
+(use-package ediff
+  :custom
+  (ediff-window-setup-function #'ediff-setup-windows-plain)
+  (ediff-split-window-function #'split-window-horizontally))
+
 ;; Lightweight Rust mode
 (use-package rust-mode
   :ensure t
