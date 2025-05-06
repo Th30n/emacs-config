@@ -69,6 +69,8 @@
   (setopt org-refile-targets '((nil . (:maxlevel . 2))))
   ;; Make `org-refile' use path-like selection of headers.
   (setopt org-refile-use-outline-path t)
+  ;; Make `org-refile' file notes at the beginning.
+  (setopt org-reverse-note-order t)
   (setopt org-agenda-skip-scheduled-if-done t)
   (setopt org-agenda-skip-deadline-if-done t)
   (setopt org-agenda-custom-commands
