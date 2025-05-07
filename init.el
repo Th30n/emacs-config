@@ -65,6 +65,9 @@
   (keymap-global-set "C-c l" 'org-store-link)
   (keymap-global-set "C-c c" 'org-capture)
   (keymap-global-set "C-c a" 'org-agenda)
+  ;; Prettify markup
+  (setopt org-hide-emphasis-markers t)
+  (setopt org-pretty-entities t)
   ;; Make `org-refile' look for up to :maxlevel headers in the current file.
   (setopt org-refile-targets '((nil . (:maxlevel . 2))))
   ;; Make `org-refile' use path-like selection of headers.
