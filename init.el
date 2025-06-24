@@ -258,6 +258,10 @@
 
 (prefer-coding-system 'utf-8)
 
+;; ----------------------------------------------------------------------------
+;; Search Customization
+(setopt isearch-lazy-count t)
+
 (use-package char-fold
   :config
   ;; When searching for "d" with char-fold searching, also include "đ"
