@@ -259,6 +259,12 @@
 (prefer-coding-system 'utf-8)
 
 ;; ----------------------------------------------------------------------------
+;; Minibuffer Customization
+(setopt completion-auto-select 'second-tab)
+(setopt enable-recursive-minibuffers t)
+(setopt minibuffer-depth-indicate-mode t)
+
+;; ----------------------------------------------------------------------------
 ;; Search Customization
 (setopt isearch-lazy-count t)
 
