@@ -221,6 +221,14 @@
 
 (keymap-global-set "C-c i" 'find-user-init-file)
 
+(defun yank-pop-kill-ring ()
+  "Yank and then remove the element from `kill-ring'"
+  (interactive)
+  (yank)
+  (null (pop kill-ring)))
+
+(keymap-global-set "C-c C-y" 'yank-pop-kill-ring)
+
 ;; Enable disabled functions (they are disabled for newcomers).
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
