@@ -65,6 +65,8 @@
   (keymap-global-set "C-c l" 'org-store-link)
   (keymap-global-set "C-c c" 'org-capture)
   (keymap-global-set "C-c a" 'org-agenda)
+  ;; Make C-a and C-e respect headlines
+  (setopt org-special-ctrl-a/e t)
   ;; Prettify markup
   (setopt org-hide-emphasis-markers t)
   (setopt org-pretty-entities t)
