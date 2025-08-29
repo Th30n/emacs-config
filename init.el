@@ -264,7 +264,7 @@
 
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
-(set-face-attribute 'default nil :font "Source Code Pro Semibold 10")
+(add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font Medium 16"))
 
 (prefer-coding-system 'utf-8)
 
