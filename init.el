@@ -101,6 +101,12 @@
             notifications readonly ring spelling stamp track))
   :hook (erc-mode . hl-line-mode))
 
+;; Built-in feed (RSS, Atom) reader
+(use-package newsticker
+  :defer t
+  :custom
+  (newsticker-automatically-mark-items-as-old nil))
+
 ;; Proced Mode
 (use-package proced
   :config
