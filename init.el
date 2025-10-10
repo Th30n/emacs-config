@@ -120,6 +120,26 @@
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
+;; Sending E-Mail
+(use-package message
+  :config
+  (setopt sendmail-program "msmtp")
+  (setopt send-mail-function 'sendmail-send-it)
+  (setopt mail-specify-envelope-from t)
+  (setopt mail-envelope-from 'header)
+  (setopt message-kill-buffer-on-exit t))
+
+;; Notmuch E-Mail index & search
+(use-package notmuch
+  :if (locate-library "notmuch.el")
+  :config
+  ;; There's no documentation on `notmuch-user-agent', but this sets the
+  ;; `mail-user-agent' to be notmuch (used by `compose-mail')
+  (setopt mail-user-agent 'notmuch-user-agent)
+  (setopt notmuch-search-oldest-first nil)
+  ;; GMail will automatically FCC outgoing mail to its "sent" folder.
+  (setopt notmuch-fcc-dirs nil))
+
 ;; Lightweight Rust mode
 (use-package rust-mode
   :ensure t
