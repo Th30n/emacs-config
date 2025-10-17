@@ -94,12 +94,20 @@
 ;; Emacs IRC Client (ERC)
 (use-package erc
   :config
-  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (setopt erc-modules
-          '(autojoin button completion fill irccontrols keep-place list
-            match menu move-to-prompt netsplit networks nicks noncommands
-            notifications readonly ring spelling stamp track))
+          (seq-union '(keep-place nicks notifications scrolltobottom spelling)
+                     erc-modules))
+  :custom
+  (erc-hide-list '("JOIN" "PART" "QUIT"))
+  (erc-server-reconnect-function #'erc-server-delayed-check-reconnect)
+  (erc-server-reconnect-timeout 30)
   :hook (erc-mode . hl-line-mode))
+
+(use-package erc-fill
+  :defer t
+  :custom
+  (erc-fill-function #'erc-fill-wrap)
+  (erc-fill-static-center 18))
 
 ;; Built-in feed (RSS, Atom) reader
 (use-package newsticker
