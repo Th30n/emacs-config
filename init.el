@@ -95,7 +95,7 @@
 (use-package erc
   :config
   (setopt erc-modules
-          (seq-union '(keep-place nicks notifications scrolltobottom spelling)
+          (seq-union '(keep-place nicks notifications sasl scrolltobottom spelling)
                      erc-modules))
   :custom
   (erc-hide-list '("JOIN" "PART" "QUIT"))
