@@ -194,6 +194,11 @@
 (setopt dired-isearch-filenames 'dwim)
 (setopt dired-dwim-target t)
 
+;;;; Imenu
+(use-package imenu
+  :custom
+  (imenu-flatten 'annotation))
+
 ;;; Theme
 
 (use-package gruvbox-theme
