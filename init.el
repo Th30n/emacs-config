@@ -146,7 +146,11 @@
   (setopt mail-user-agent 'notmuch-user-agent)
   (setopt notmuch-search-oldest-first nil)
   ;; GMail will automatically FCC outgoing mail to its "sent" folder.
-  (setopt notmuch-fcc-dirs nil))
+  (setopt notmuch-fcc-dirs nil)
+  ;; Ask for confirmation when sending mail.  It happens too often where I send
+  ;; without actually completing the mail.
+  (command-query 'notmuch-mua-send "Send mail?")
+  (command-query 'notmuch-mua-send-and-exit "Send mail and exit?"))
 
 ;; Lightweight Rust mode
 (use-package rust-mode
