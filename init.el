@@ -203,6 +203,20 @@
   :custom
   (imenu-flatten 'annotation))
 
+;;;; IBuffer
+(keymap-global-set "C-x C-b" 'ibuffer)
+(use-package ibuffer
+  :custom
+  (ibuffer-show-empty-filter-groups nil)
+  (ibuffer-saved-filter-groups
+   '(("my-default"
+      ("Org" (or (used-mode . org-agenda-mode) (used-mode . org-mode)))
+      ("Magit" (derived-mode . magit-mode))
+      ("Dired" (used-mode . dired-mode))
+      ("ERC" (or (used-mode . erc-list-menu-mode) (used-mode . erc-mode))))))
+  :hook ((ibuffer-mode . (lambda ()
+                           (ibuffer-switch-to-saved-filter-groups "my-default")))))
+
 ;;; Theme
 
 (use-package gruvbox-theme
