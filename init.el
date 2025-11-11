@@ -186,6 +186,13 @@
      (make-comint "aider" "aider" nil
                   "--chat-mode" "ask" "--watch-files" "--subtree-only"))))
 
+;;;; Eglot
+(use-package eglot
+  :defer t
+  :bind (:map eglot-mode-map
+              ("C-M-\\" . eglot-format)
+              ("C-c C-f" . eglot-format-buffer)))
+
 ;;;; Dired
 
 (setopt dired-listing-switches "--group-directories-first -lha")
