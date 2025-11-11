@@ -109,12 +109,6 @@
   (erc-fill-function #'erc-fill-wrap)
   (erc-fill-static-center 18))
 
-;; Built-in feed (RSS, Atom) reader
-(use-package newsticker
-  :defer t
-  :custom
-  (newsticker-automatically-mark-items-as-old nil))
-
 ;; Proced Mode
 (use-package proced
   :config
