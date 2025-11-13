@@ -193,6 +193,11 @@
               ("C-M-\\" . eglot-format)
               ("C-c C-f" . eglot-format-buffer)))
 
+;;;; Compile
+(use-package compile
+  :custom (compilation-scroll-output 'first-error)
+  :hook ((compilation-filter . ansi-color-compilation-filter)))
+
 ;;;; Dired
 
 (setopt dired-listing-switches "--group-directories-first -lha")
